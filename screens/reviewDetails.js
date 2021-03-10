@@ -1,17 +1,22 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Button, StyleSheet, Text, View } from "react-native";
+import React, { useState } from "react";
 
-import React from "react";
+import { globalStyles } from "../styles/global";
 
 const ReviewDetails = (props) => {
+  const pressHandler = () => {
+    props.navigation.goBack();
+  };
+
   return (
-    <View style={styles.container}>
+    <View style={globalStyles.container}>
       <Text>Review Details Screen</Text>
+      <Text>{props.navigation.getParam("title")}</Text>
+      <Text>{props.navigation.getParam("rating")}</Text>
+      <Text>{props.navigation.getParam("body")}</Text>
+      <Button title="Back to homescreen" onPress={pressHandler} />
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: { padding: 24 },
-});
 
 export default ReviewDetails;
